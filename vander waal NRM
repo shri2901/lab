@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<math.h>
+ void main()
+{
+
+ float f,f1, a, b, v1,vo, P, T, Pc, Tc, R=8.314;
+
+int count;
+
+printf("Enter the values of actual pressure and temperature\n");
+
+scanf("%f %f", &P, &T);
+
+printf("Enter the values of critical pressure and temperature \n");
+
+scanf("%f %f", &Pc,&Tc);
+
+a=(27*R*R*Tc*Tc)/(64*Pc);
+
+b=(R*Tc)/(8*Pc);
+
+vo=(R*T)/P;
+
+printf("value of a and b are %f and %f\n",a,b);
+
+printf("ideal molar volume is %f \n",vo);
+
+{
+
+NR:
+
+f=(P+(a/(vo*vo)))*(vo-b)-(R*T);
+
+f1=(vo-b)*((-2*a)/(vo*vo*vo))+P+(a/vo*vo);
+
+v1=vo-f/f1;
+
+}
+
+if (fabs(((v1-vo)/vo)<0.001))
+
+ printf("molar volume is %f \n",v1);
+
+ else
+
+{
+
+ vo=v1;
+
+goto NR;
+}
+}
