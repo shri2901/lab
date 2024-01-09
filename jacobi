@@ -1,0 +1,50 @@
+#include <stdio.h> 
+#include <math.h> 
+void main()
+
+{ 
+    float Xo=0, Yo=0, Zo=0, X1, X2, X3, a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4, A, B, C ; 
+    int count=0;
+
+printf("enter the values of a1, a2, a3, a4");
+
+scanf("%f%f%f%f", &a1, a2, &a3, &a4);
+
+if((fabs(a1)>=fabs(a2+a3)) && (fabs(b2)>=fabs(b1+b3))&&(fabs(c3)>=fabs(c1 +c2))) 
+{
+
+jacobi:
+
+X1=(a4-((a2*Yo)+(a3*Zo)))/a1; 
+X2=(b4-((b1*Xo)+(b3*Zo)))/b2;
+
+X3=(c4-((c1*Xo)+(c2*Yo)))/c3; 
+    
+} 
+else {
+
+printf("enter the correct values"); 
+    
+}
+
+A=fabs((X1-Xo)/Xo);
+B=fabs((X2-Yo)/Yo); 
+C=fabs((X3-Zo)/Zo);
+
+if((A<=0.001)&&(B<=0.001)&&(C<=0.001))
+
+printf("the values of X1=%f, X2=%f, X3=%f", X1,X2,X3); 
+else
+
+{ 
+    Xo=X1; 
+    Yo=X2; 
+    Zo=X3; 
+    count++; 
+    goto jacobi;
+
+}
+
+printf("the no. of iterations are %d",count);
+
+}
