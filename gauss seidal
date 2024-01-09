@@ -1,0 +1,60 @@
+#include <stdio.h> 
+#include <math.h> 
+int main() 
+{
+
+float Xo=0 , Yo=0 , Zo=0 , X1, Y1, Z1, a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4, A, B, C; 
+int count = 0, n=1 ; 
+while (n) {
+
+come: 
+printf("Enter the values of a1, a2, a3, a4\n");
+
+scanf("%f %f %f %f", &a1, a2, &a3, &a4);
+
+printf("Enter the values of b1, b2, b3, b4\n");
+
+scanf("%f %f %f %f", &b1, b2, &b3, &b4);
+
+printf("Enter the values of c1, c2, c3, c4\n");
+
+scanf("%f %f %f %f", &c1, &c2, &c3, &c4);
+
+n=0 ; }
+
+if ((fabs(a1) >= fabs(a2 + a3)) && (fabs(b2) >= fabs(b1 + b3)) && (fabs(c3) >= fabs(c1 + c2))) 
+{ 
+    GaussSeidal:
+   X1=(a4-((a2*Yo)+(a3*Zo)))/ a1; 
+   Y1 = (b4-((b1 * X1) + (b3 * Zo))) / b2; 
+   Z1 = (c4 - ((c1*X1) + (c2*Y1))) / c3; 
+    }
+    else 
+{
+
+printf("Enter the correct values\n"); goto come; return 1; }
+
+A=fabs((X1-Xo)/Xo);
+B = fabs((Y1 - Yo) / Yo);
+C = fabs((Z1 - Zo) / Zo);
+
+if ((A<=0.001) && (B<=0.001) && (C<=0.001))
+{
+
+printf("The values of X1 = %.2f, X2 = %.2f, X3 %.2f\n", X1, Y1, Z1);
+
+} 
+else 
+{ 
+    Xo =X1;
+    Yo =Y1; 
+    Zo =Z1; 
+    goto GaussSeidal; 
+    count++;
+    }
+
+printf("The number of iterations is %d\n", count);
+return 0;
+    
+}
+
