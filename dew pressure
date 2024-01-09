@@ -1,0 +1,18 @@
+t=input('given temperature T= ');
+n=input('no. of components n= ');
+for i=1:n
+    y(i)=input('mole composition in gaseous phase y= ');
+    a(i)=input('A = ');
+    b(i)=input('B = ');
+    c(i)=input('C = '); end
+fprintf('saturation pressures\n: ') for i=1:n 
+    ps(i)=exp(a(i)-b(i)/(t+c(i)));
+    fprintf('Ps(%d) is:%f\n',i,ps(i)); end
+for i=1:n P=1/sum(y./ps);
+end
+fprintf('the total pressure Pt= :%f\n',P);
+fprintf('mole composition in liquid phase: \n')
+for i=1:n
+    x(i)=(y(i)*P)/ps(i);
+    fprintf('x(%d)= %f\n',i,x(i));
+end
