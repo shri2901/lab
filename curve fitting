@@ -1,0 +1,52 @@
+#include <stdio.h> 
+#include <math.h> 
+int main() {
+
+int i, dp=5 ;
+
+float u, unew, a, b, x, y, s, t, sum1=0, sum2=0, sum3=0, sum4=0;
+
+for (i=0;i<20;i++) 
+{
+
+printf("\n particle diameter (mm): %d", dp);
+
+printf("\t velocity(mm/sec): ");
+
+scanf("%f",&u); 
+    
+}
+
+printf("\nlog(dp)\tlog(u)\tx*y\tx*x\n");
+
+for (i=0;i<20;i++) 
+{ 
+    x=log(dp); 
+    y=log(u) ; 
+    s=x*y;
+    t=x*x; 
+    printf("\n%.2f\t%.2f\t%.2f\t%.2f\n",x,y,s,t);
+
+    sum1=sum1+x; 
+    sum2=sum2+x; 
+    sum3=sum3+x;
+    sum4=sum4+x; 
+    dp=dp+5 ; 
+    
+}
+
+b=(20*sum3-(sum1*sum2))/(20*sum4-pow(sum1,2));
+
+a=exp((sum2-b*sum1)/20);
+
+printf("\t value of a=%f \n value Of b=%f", a,b);
+
+dp=5 ; for (i=0;i<20;i++) 
+{
+
+unew=a*pow(dp,b); 
+printf("\n%d\t%.4f\n", dp, unew);
+
+dp=dp+5; 
+    }
+}
